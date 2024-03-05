@@ -1,28 +1,33 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
-  <link rel="stylesheet" type="text/css" href="register.css">
-  <script defer src="./register.js"></script>
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <script src="script.js" defer></script>
+  <title>Library Registration Form</title>
 </head>
 
 <body>
-  <form type="submit" name=" registrationform" onsubmit="return validateForm()">
+  <form name="registrationForm"  onsubmit="return validateForm() ">
     <div class="container">
-      <form id="form" action="/"></form>
       <center>
-        <h1> Library Registration Form</h1>
+        <h1>Library Registration Form</h1>
+        <p id="myP" onmousedown="mouseDown()" onmouseup="mouseUp()">
+        WELCOME TO OUR LIBRARY - HOUSE OF KNOWLEDGE</p>
       </center>
-      <hr>
-      <label> <b><h3>Name </h3></b></label>
-      <input type="text" name="name" placeholder="Enter name" size="15" required />
-      <label> <b>Register No</b> </label>
-      <input type="text" name="register no" placeholder="XXXXXX " size="6" required />
-      
+      <div class="input-group">
+        <label for="name"><b>Name:</b></label>
+        <input type="text" name="name" placeholder="Enter name" size="15" />
+        <div class="error"></div>
+      </div>
+      <div class="input-group">
+        <label for="registerno"><b>Register No:</b></label>
+        <input type="text" name="registerno" placeholder="XXXXXX" size="6" />
+      </div>
       <div>
-        <label><b>Course :</b> </label>
-        <select>
-          <option value="Course">Course</option>
+        <label for="Course"><b>Course:</b></label>
+        <select id="Course" name="Course" onchange="myonchange()">
+          <option value="Course" disabled selected>Select Course</option>
           <option value="BE">BE</option>
           <option value="B.Sc">B.Sc</option>
           <option value="B.Tech">B.Tech</option>
@@ -30,55 +35,56 @@
           <option value="MCA">MCA</option>
           <option value="M.Tech">M.Tech</option>
         </select>
+        <p id="demo"></p>
       </div>
-
-      
-        <label for="Department"><b>Department:</b><br></label>
+      <div>
+        <label for="Department"><b>Department:</b></label>
         <select id="Department" name="Department">
-          <option value="Dpt">Dpt</option>
+          <option value="Department" disabled selected>Select Department</option>
           <option value="CSE">CSE</option>
           <option value="IT">IT</option>
           <option value="ECE">ECE</option>
           <option value="EEE">EEE</option>
           <option value="CIVIL">CIVIL</option>
-          
         </select>
-
-        <br> Date of Birth: <br>  
-        <input type="date" name="DOB"><br>
-    
-
-      <label><br> <b>Phone :</b></label>
-      <input type="text" name="country code" placeholder="Phone " value="+91" size="2" />
-      
+      </div>
       <div>
-        <label> <b>Gender :</b></label><br>
-        <input type="radio" value="Male" name="gender" > Male
+        <label><b>Date of Birth:</b></label>
+        <input type="date" name="DOB" ><br>
+      </div>
+      <div class="input-group">
+        <label for="phone"><b>Phone:</b></label>
+        <input type="text" name="phone" placeholder="Phone" value="" size="2" />
+        <div class="error" id="phoneError"></div>
+      </div>
+      <div>
+        <label><b>Gender:</b></label><br>
+        <input type="radio" value="Male" name="gender"> Male
         <input type="radio" value="Female" name="gender"> Female
         <input type="radio" value="Other" name="gender"> Other
       </div>
-      <div class ="input-control">
-      <label><b>Email</b></label>
-      <input id="email"type="email" placeholder="Enter Email" name="email" required>
-      <div class= "error"></div>
-      </div>
-
       <div>
-        <label> <b>Year:</b></label><br>
-        <input type="radio" value="I" name="Year" >I
-        <input type="radio" value="II" name="Year"> II
-        <input type="radio" value="III" name="Year">III
-        <input type="radio" value="IV" name="Year">IV
-        
+        <label><b>Email:</b></label>
+        <input type="email" placeholder="Enter Email" name="Email" >
       </div>
-      <label for="clg"><b>College Name:</b></label>
-      <input type="text" placeholder="Enter College name" name="clg" required>
-
-      <button type="submit" class="registerbtn">Register</button>
-
-     
+      <div>
+        <label><b>Year:</b></label><br>
+        <input type="radio" value="I" name="Year" > I
+        <input type="radio" value="II" name="Year"> II
+        <input type="radio" value="III" name="Year"> III
+        <input type="radio" value="IV" name="Year"> IV
+      </div>
+      <div>
+        <label for="clg"><b>College Name:</b></label>
+        <input type="text" placeholder="Enter College name" name="clg">
+      </div>
+      <button1 onclick="myopen()">View sample books</button1>
+      <button type="submit" onclick="myalert()" class="registerbtn" >Register</button>
+      <p>Already have an account? <a href="login.html">Login here</a></p>
+      <button2 onclick="window.print()">Print this page</button2>
     </div>
   </form>
 </body>
 
 </html>
+
