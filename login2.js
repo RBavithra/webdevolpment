@@ -1,59 +1,60 @@
 $(document).ready(function() {
     const form = $('#form');
-    const Username = $('#Username');
-    const Password = $('#Password');
+    const username = $('#Username');
+    const password = $('#Password');
+    
     console.log("User Agent:", window.navigator.userAgent);
-    const d = new Date();
-    console.log("Current Date and Time:", d);
-  
-    form.on('submit', function(e) {
-      e.preventDefault();
-      validateInputs();
+    const currentDate = new Date();
+    console.log("Current Date and Time:", currentDate);
+    
+    form.submit(function(e) {
+        e.preventDefault();
+        validateInputs();
     });
-  
-    const input = $('#Username');
-    input.on('keydown', function(event) {
-      console.log("keydown:" + event.key);
+    
+    username.keydown(function(event) {
+        console.log("keydown:" + event.key);
     });
-  
-    const button = $('#button');
-    button.on('click', function() {
-      alert("Welcome to TCE LIBRARY");
+    
+    $('#button').click(function() {
+        alert("Welcome to TCE LIBRARY");
     });
-  
-    $(window).on('load', function() {
-      alert("Page has finished loading!");
-    });
-  
-    const setError = (element, message) => {
-      const inputControl = element.parent();
-      const errorDisplay = inputControl.find('.error');
-      errorDisplay.text(message);
-      inputControl.addClass('error').removeClass('success');
-    };
-  
-    const setSuccess = element => {
-      const inputControl = element.parent();
-      const errorDisplay = inputControl.find('.error');
-      errorDisplay.text('');
-      inputControl.addClass('success').removeClass('error');
-    };
-  
-    const validateInputs = () => {
-      const UsernameValue = Username.val().trim();
-      const PasswordValue = Password.val().trim();
-      if (UsernameValue === '') {
-        setError(Username, 'Username is required');
-      } else {
-        setSuccess(Username);
-      }
-      if (PasswordValue === '') {
-        setError(Password, 'Password is required');
-      } else if (PasswordValue.length < 8) {
-        setError(Password, 'Password must be at least 8 characters.');
-      } else {
-        setSuccess(Password);
-      }
-    };
-  });
-  
+    
+    function onPageLoad() {
+        alert("Page has finished loading!");
+    }
+    onPageLoad();
+    
+    function setError(element, message) {
+        const inputControl = element.parent();
+        const errorDisplay = inputControl.find('.error');
+        errorDisplay.text(message);
+        inputControl.addClass('error').removeClass('success');
+    }
+    
+    function setSuccess(element) {
+        const inputControl = element.parent();
+        const errorDisplay = inputControl.find('.error');
+        errorDisplay.text('');
+        inputControl.addClass('success').removeClass('error');
+    }
+    
+    function validateInputs() {
+        const usernameValue = username.val().trim();
+        const passwordValue = password.val().trim();
+        
+        if (usernameValue === '') {
+            setError(username, 'Username is required');
+        } else {
+            setSuccess(username);
+        }
+        
+        if (passwordValue === '') {
+            setError(password, 'Password is required');
+        } else if (passwordValue.length < 8) {
+            setError(password, 'Password must be at least 8 characters.');
+        } else {
+            setSuccess(password);
+        }
+    }
+});
